@@ -8,18 +8,28 @@
 </head>
 
 <body>
-<h1>La vie et la mort d'un pauvre monstre...</h1>
-<br>
-<div id="monster" class="monster"><p>Monster</p><p>🔆</p></div>
-<div id="actionbox" class="monster">
-    <p>Monster life log</p>
 
+<h1>The life and death of a poor monster...</h1>
+<br>
+
+<div id="monster" class="monster">
+    <p id="monsterName">Monster</p>
+    <p id="awakeStatus">🔆</p>
 </div>
+
+<div id="actionbox" class="monster">
+    <p>Monster life log 📝</p>
+</div>
+
 <br/><br/>
 <ul id="status">
     <li>Life : 0</li>
     <li>Money : 0</li>
     <li>Awake</li>
+</ul>
+<ul id="indicators">
+    <li>Life 💖</li>
+    <li>Money 💰</li>
 </ul>
 <hr>
 
@@ -34,7 +44,13 @@
 
 <button id="b1">New life</button>
 <button id="k">Kill</button>
+<button id="rename">Rename</button>
 
 <script src="js/monster.js"></script>
+
+<footer id="footer">
+    <p>Rémi Choffat - S2D - R2.02 Development of applications with Human-Machine Interface (JavaScript)</p>
+</footer>
+
 </body>
 </html>

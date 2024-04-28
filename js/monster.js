@@ -1,5 +1,5 @@
 // Variables globales décrivant l'état du monstre
-let name;
+let name = "Monster";
 let life;
 let money;
 let awake = true;
@@ -11,11 +11,13 @@ const hasardInterval = 12000;
 let hasardInt = setInterval(hasard, hasardInterval);
 const defaultLife = 15;
 const defaultMoney = 10;
-const defaultName = "Monster";
 let status = document.getElementById("status");
+let indicators = document.getElementById("indicators");
 let actionbox = document.getElementById("actionbox");
 let timeout;
 let monsterbox = document.getElementById("monster");
+let monsterName = document.getElementById("monsterName");
+let awakeStatus = document.getElementById("awakeStatus");
 
 
 // Fonction qui initialise le monstre
@@ -40,6 +42,7 @@ document.getElementById("b4").onclick = sleep;
 document.getElementById("b5").onclick = eat;
 document.getElementById("b7").onclick = work;
 document.getElementById("k").onclick = kill;
+document.getElementById("rename").onclick = rename;
 
 
 // Fonctions de déroulement de l'application (actions du monstre)
@@ -129,6 +132,7 @@ function eat() {
     }
 }
 
+
 function newLife() {
     if (life <= 0) {
         actionbox.innerHTML = "";
@@ -138,7 +142,7 @@ function newLife() {
         log(name + " started a new life ☀️");
         hasardInt = setInterval(hasard, hasardInterval);
     } else {
-        log(name + " is still alive ; he can't start a new life");
+        log(name + " is still alive ; it can't start a new life");
     }
 }
 
@@ -153,10 +157,25 @@ function kill() {
     log(name + " is dead... 🪦")
 }
 
+function rename() {
+    if (life >= 1) {
+        let newName = prompt("What is the new name of " + name + " ?");
+        if (!(newName === " ") && !(newName === name) && !(newName === "")) {
+            if (newName.length > 20) {
+                alert("This new name is too long")
+            } else {
+                name = newName;
+                log("The monster changed its name to " + name + " 💬");
+                displayStatus(life, money, status);
+            }
+        }
+    }
+}
+
 
 // Fonction de démarrage de l'application
 function go() {
-    init(defaultName, defaultLife, defaultMoney);
+    init(name, defaultLife, defaultMoney);
     document.getElementById("b6").onclick = showme;
     displayStatus(life, money, awake);
 }
@@ -170,14 +189,15 @@ function log(message) {
 }
 
 
-// Fonction qui affiche l'état du monstre
+// Fonction qui affiche l'état du monstre, et définit le style en fonction de cet état
 function displayStatus(life, money, awake) {
-    status.innerHTML = "<li>Life : " + life + "</li><li>Money : " + money + "</li><li>" + (awake ? "Awake" : "Asleep") + "</li><li>" + ("💖".repeat(life)) + "</li><li>" + ("💰".repeat(money)) + "</li>";
+    status.innerHTML = "<li>Life : " + life + "</li><li>Money : " + money + "</li><li>" + (awake ? "Awake" : "Asleep") + "</li>";
+    indicators.innerHTML = "<li>" + ("💖".repeat(life)) + "</li><li>" + ("💰".repeat(money)) + "</li>";
     monsterbox.style.backgroundColor = (life <= 0 ? "grey" : life <= 5 ? "red" : life <= 10 ? "orange" : life <= 15 ? "lightblue" : "lightgreen");
     monsterbox.style.borderWidth = (money / 4) + "px";
     monsterbox.style.borderColor = (awake ? "peachpuff" : "blueviolet");
-    monsterbox.childNodes[0].innerHTML = name;
-    monsterbox.childNodes[1].innerHTML = (awake ? "👻" : life > 0 ? "😴" : "⚰️");
+    monsterName.innerHTML = name;
+    awakeStatus.innerHTML = (awake ? "👻" : life > 0 ? "😴" : "⚰️");
 }
 
 

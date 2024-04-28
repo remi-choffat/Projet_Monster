@@ -1,25 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
 .monster {
     display: inline-block;
     vertical-align: top;
     height: 100px;
     margin-left: 50px;
-
+    box-shadow: 5px 5px 5px grey;
 }
 
 #monster {
     border-radius: 5px;
     background-color: orange;
     width: 100px;
+    text-align: center;
+    border: peachpuff solid;
 }
 
 #actionbox {
     border: 1px solid grey;
     width: 500px;
     overflow: auto;
+    padding: 5px;
 }
 
 #actionbox > p {
-    margin: 0 ;
+    margin: 0;
 }
 
 ul#status {
@@ -31,7 +39,7 @@ ul#status {
 }
 
 ul#status li {
-    margin-left : 20px;
+    margin-left: 20px;
 }
 
 button {

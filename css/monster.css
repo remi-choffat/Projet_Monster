@@ -8,7 +8,6 @@ body {
     display: inline-block;
     vertical-align: top;
     height: 100px;
-    margin-left: 50px;
     box-shadow: 5px 5px 5px grey;
 }
 
@@ -18,6 +17,7 @@ body {
     width: 100px;
     text-align: center;
     border: peachpuff solid;
+    margin-bottom: 20px;
 }
 
 #actionbox {
@@ -36,10 +36,8 @@ ul {
     flex-direction: row;
     list-style: none;
     justify-content: center;
-}
-
-ul > li {
-    margin-left: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 button {
@@ -59,4 +57,32 @@ footer {
     bottom: 0;
     font-style: italic;
     font-size: 0.7em;
+}
+
+button {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    #actionbox {
+        margin-left: 50px;
+    }
+
+    ul > li {
+        margin-left: 20px;
+    }
 }
